@@ -19,10 +19,17 @@ public class HelloController {
         return "Goodbye, Spring!";
     }
 
-    // Handles requests /hello?name=LaunchCode
+    // Handles requests localhost:8080/hello?name=LaunchCode
     @GetMapping("hello")
     @ResponseBody
     public String helloWithQueryParam(@RequestParam String name) {
+        return "Hello, " + name + "!";
+    }
+
+    // Handles requests localhost:8080/hello/LaunchCode
+    @GetMapping("hello/{name}")
+    @ResponseBody
+    public String helloWithPathParam(@PathVariable String name) {
         return "Hello, " + name + "!";
     }
 
