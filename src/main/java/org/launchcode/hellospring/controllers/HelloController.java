@@ -2,6 +2,9 @@ package org.launchcode.hellospring.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import java.util.List;
+import java.util.ArrayList;
+
 
 @Controller
 public class HelloController {
@@ -27,5 +30,15 @@ public class HelloController {
     // no @ResponseBody needed with templates
     public String helloForm() {
         return "form"; // assumes this is the name of the template
+    }
+
+    @GetMapping("hello-names")
+    public String helloNames(Model model) {
+        List<String> names = new ArrayList<>();
+        names.add("LaunchCode");
+        names.add("Java");
+        names.add("JavaScript");
+        model.addAttribute("names", names);
+        return "hello-list";
     }
 }
